@@ -1,13 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\\u00D6vningar\\2025-09-10 - Text Adventure\\",
+  "WorkspaceRootPath": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D609E8D-7259-4D80-9843-D105B9816F37}|2025-09-10 - Text Adventure\\2025-09-10 - Text Adventure.csproj|d:\\skolgrejer\\h\u00F6gskolan\\spelprogrammering\\\u00F6vningar\\2025-09-10 - text adventure\\2025-09-10 - text adventure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D609E8D-7259-4D80-9843-D105B9816F37}|2025-09-10 - Text Adventure\\2025-09-10 - Text Adventure.csproj|d:\\skolgrejer\\h\u00F6gskolan\\spelprogrammering\\parprogrammerings uppgifter\\textadventure\\2025-09-10 - text adventure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D609E8D-7259-4D80-9843-D105B9816F37}|2025-09-10 - Text Adventure\\2025-09-10 - Text Adventure.csproj|solutionrelative:2025-09-10 - text adventure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TextAdventure\\Room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\\u00D6vningar\\2025-09-10 - Text Adventure\\2025-09-10 - Text Adventure\\Program.cs",
+              "DocumentMoniker": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\2025-09-10 - Text Adventure\\Program.cs",
               "RelativeDocumentMoniker": "2025-09-10 - Text Adventure\\Program.cs",
-              "ToolTip": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\\u00D6vningar\\2025-09-10 - Text Adventure\\2025-09-10 - Text Adventure\\Program.cs",
+              "ToolTip": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\2025-09-10 - Text Adventure\\Program.cs",
               "RelativeToolTip": "2025-09-10 - Text Adventure\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAIwEsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-10T13:59:06.691Z",
               "EditorCaption": ""
@@ -37,13 +38,12 @@
               "DocumentIndex": 1,
               "Title": "Room.cs",
               "DocumentMoniker": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs",
-              "RelativeDocumentMoniker": "..\\..\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs",
+              "RelativeDocumentMoniker": "TextAdventure\\Room.cs",
               "ToolTip": "D:\\Skolgrejer\\H\u00F6gskolan\\Spelprogrammering\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs",
-              "RelativeToolTip": "..\\..\\Parprogrammerings Uppgifter\\TextAdventure\\TextAdventure\\Room.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "RelativeToolTip": "TextAdventure\\Room.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T13:06:19.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T13:06:19.525Z"
             }
           ]
         }

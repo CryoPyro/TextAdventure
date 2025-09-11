@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
+using System.Reflection.Metadata;
 using System.Xml.Linq;
 
 namespace TextAdventure;
@@ -24,10 +26,13 @@ public class Program
         Console.WriteLine($"Greetings {player.name}");
 
         Room[] World = [
-            new Room("Home", [1]),
-            new Room("Town", [0, 2]),
-            new Room("Castle", [1, 3]),
-            new Room("Treasury", [2]) { OnEnter = new GameOverEvent("YOU WON THE GAME!!!")},
+            new Room("Home", []),
+            new Room("Town", []),
+            new Room("Shop", []),
+            new Room("Castle", []),
+            new Room("Main Hall", []),
+            new Room("Castle Dungeons", []),
+            new Room("Treasury", []) { OnEnter = new GameOverEvent("YOU WON THE GAME!!!")},
         ];
         World[2].OnEnter = new FightEvent([new Enemy() { name = "Swordsman" }]);
 
@@ -106,13 +111,55 @@ public class Room
     }
 }
 
+public abstract class Item
+{
+    public string name;
+    public string Descripton;
+    public int value;
+}
 
-// Characters
+public class Sword : Item
+{
+    public int damageIncrease = 3;
+}
+
+public class Potion : Item
+{
+    public int healing = 10;
+
+    public void Use(Player player)
+    {
+        if (player.health + healing > player.maxHealth)
+        {
+            player.health = player.maxHealth;
+        }
+        else
+        {
+            player.health += healing;
+        }
+
+        player.inventory.Remove(this);
+    }
+}
+
+public class Key : Item
+{
+
+}
+
+public class LockPick : Key
+{
+    
+}
+
+
+#region Characters
 
 public class Player
 {
     // Stats
     public string name = "";
+    public int maxHealth = 20;
     public int health = 20;
     public int baseDmg = 3;
 
@@ -120,6 +167,8 @@ public class Player
     public Room Location;
     public bool isGuarding = false;
     public bool GameOver = false;
+
+    public List<Item> inventory = new List<Item>();
 
     public int GetDamage()
     {
@@ -147,7 +196,9 @@ public class Player
                 isGuarding = true;
                 break;
             case 3:
-                // TODO: later
+                //Potion[] potions = inventory.FindAll(item => item is Potion potion).ToArray<Potion>();
+                Potion[] potions = [.. inventory.OfType<Potion>()];
+                potions[Event.AskToChoose(potions.Select(item => $"{item.name}")) - 1].Use(this);
                 break;
         }
     }
@@ -160,7 +211,7 @@ public class Enemy
     public int health = 5;
     public int Dmg = 2;
 }
-
+#endregion
 
 // Events
 
@@ -236,6 +287,34 @@ public class InBetweenEvent : Event
     {
         Console.WriteLine("Press enter to continue");
         Console.ReadLine();
+        return null;
+    }
+}
+
+public class SearchEvent : Event
+{
+
+    public List<Item[]> lootTable = [];
+
+
+
+    public SearchEvent()
+    {
+        Name = "Search";
+        Descripton = "You search around";
+    }
+
+    
+
+    public override Event? Update(ref Player player, Room[] world)
+    {
+        if (lootTable.Count == 0)
+            return null;
+        Random random = new Random();
+        Item[] items = lootTable[random.Next(0, lootTable.Count)];
+        player.inventory.AddRange(items);
+
+
         return null;
     }
 }
