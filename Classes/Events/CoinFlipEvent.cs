@@ -10,7 +10,7 @@ public class CoinFlipEvent(string name, string description, Event badOutcome, Ev
 
     public override Event? Update(ref Player player, Room[] world)
     {
-        var random = new Random();
+        var random = new Random(); // Creating a new Random each time the event is updated makes the CoinFlip only Random the first time, any cheesing will result in the same outcome
         var value = random.NextSingle();
         if (GoodOutcomeChance != 0 && value <= GoodOutcomeChance)
             return NestedEvents.First();

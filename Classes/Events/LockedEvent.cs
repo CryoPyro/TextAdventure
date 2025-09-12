@@ -20,7 +20,7 @@ public class LockedEvent(string name, string description, bool unlockableByPickl
         switch (InputHelper.AskToChoose(options))
         {
             case 0:
-                var i = InputHelper.AskToChooseWithGoBack(keys.Select(key => key.Name));
+                var i = InputHelper.AskToChooseWithGoBack(keys.Select(key => key.Name + ((key is LockPick lockpick) ? $" {lockpick.Chance * 100}%" : "")));
                 if (i == keys.Length) return this;
 
                 var usedKey = keys[i];
@@ -32,6 +32,10 @@ public class LockedEvent(string name, string description, bool unlockableByPickl
                         RemoveEventFromWorld(world);
                         return null;
                     }
+                }
+                else
+                {
+                    InputHelper.DisplayAndWait("This lock seems to complicated to picklock...");
                 }
 
                 return this;
