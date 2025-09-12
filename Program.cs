@@ -39,6 +39,7 @@ public class Program
         // Misc
         var wakeUpDragon = new CombatEvent("Wake up the dragon", [dragon], slayedTheDragonEnding);
         var guardEvent = new CombatEvent("Take the keys by force", [new Enemy("Guard", 10, 1)], new SearchEvent("", "You loot the guard", [[new Money("Coin Pouch", 15), new Key("Guard key"), new Weapon("Shabby Sword", 3)]]));
+        var castleGate = new LockedEvent("", "The Castle Gate is locked", false);
 
         // World init
         Room[] World = [
@@ -49,8 +50,8 @@ public class Program
             new Room("Town", "You enter a cozy little town", [0, 2, 3], [new PickEventEvent("Approach the Guard", "You approach the guard and notice some keys dangling from his waist", [
                 guardEvent,
                 new PickEventEvent("Steal something from the guard", "What will you try to steal? You will only be able to take 1 thing.", [
-                    new CoinFlipEvent("Try to steal the keys", "You try to steal the keys", guardEvent, new SearchEvent("", "You snatch the keys and run away", [[new Key("Guard key")]])),
-                    new CoinFlipEvent("Try to steal the coin pouch", "You try to steal the coin pouch", guardEvent, new SearchEvent("", "You snatch the coin pouch and run away", [[new Money("Coin Pouch", 15)]])),
+                    new CoinFlipEvent("Try teo steal the keys", "You try to steal the keys", guardEvent, new SearchEvent("", "You snatch the keys and run away", [[new Key("Guard key")]])),
+                    new CoinFlipEvent("Try to stal the coin pouch", "You try to steal the coin pouch", guardEvent, new SearchEvent("", "You snatch the coin pouch and run away", [[new Money("Coin Pouch", 15)]])),
                 ]),
             ])]),
             new Room("Shop", "A mysterious litte shop, veils and bottles cover the walls...", [1], null, new ShopEvent("", "You enter the shop", [
@@ -58,7 +59,7 @@ public class Program
                 (0, new Potion("Lesser healing potion", 5)),
                 (0, new Potion("Greater healing Potion", 10))
             ])),
-            new Room("Castle", "You walk through the castle gate", [1, 4, 6], null, new LockedEvent("", "The Castle Gate is locked", false)),
+            new Room("Castle", "You walk through the castle gate", [1, 4, 6], null, castleGate),
             new Room("Main Hall", "The stains are not visible on the red carpet", [3, 5], null, new CombatEvent("", [new Enemy("Royal Swordsman", 15, 2), new Enemy("Royal Swordswoman", 10, 4)], new SearchEvent("", "You loot the royal guards", [[new Weapon("Broad Sword", 5)]]))),
             new Room("Throne Room", "The Dragon king sits upon the throne", [4], [new CombatEvent("Challenge the Dragon king", [king, new Enemy("Royal Captain", 15, 3), new Enemy("Squire", 7, 2)], newKingEnding)]),
             new Room("Castle Dungeons", "A musty smell fills the air", [3, 6]),
@@ -72,7 +73,7 @@ public class Program
                 (0, new Potion("Secret Potion 3", new Random().Next(20))),
                 (0, new Key("Spare Castle Key")),
             ])],  new LockedEvent("", "The shop has closed for the night")),
-            new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 14], null, new LockedEvent("", "The Castle Gate is locked", false)),
+            new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 14], null, castleGate),
             new Room("Main Hall (Night)", "The nights who patrol the hallways seem to have gone to sleep", [11, 13]),
             new Room("Throne Room (Night)", "The kings presence can be felt staring down on you from the throne.\nA sword rests against the throne", [12], [new SearchEvent("Steal the sword", "You take the sword", [[new Weapon("Greatsword", 10)]])]),
             new Room("Castle Dungeons (Night)", "A musty smell fills the air", [11, 15]),

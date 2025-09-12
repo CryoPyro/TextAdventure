@@ -27,7 +27,7 @@ public class SearchEvent(string name, string description, List<Item[]> lootTable
                         player.inventory.Add(item);
                 }
             }
-            RemoveFromPlayerLocation(player);
+            RemoveEventFromWorld(world);
         }
         return null;
     }

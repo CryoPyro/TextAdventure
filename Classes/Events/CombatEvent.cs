@@ -1,6 +1,5 @@
 using TextAdventure.Classes.Characters;
 using TextAdventure.Classes.Input;
-using TextAdventure.Classes.Items;
 
 namespace TextAdventure.Classes.Events;
 
@@ -37,7 +36,7 @@ public class CombatEvent : Event
             Enemies.RemoveAll(enemy => enemy.Health <= 0);
             if (Enemies.Count == 0)
             {
-                RemoveFromPlayerLocation(player);
+                RemoveEventFromWorld(world);
                 InputHelper.DisplayAndWait("You won...");
                 return Reward;
             }

@@ -29,7 +29,7 @@ public class LockedEvent(string name, string description, bool unlockableByPickl
                     player.inventory.Remove(usedKey);
                     if (usedKey.Use())
                     {
-                        RemoveFromPlayerLocation(player);
+                        RemoveEventFromWorld(world);
                         return null;
                     }
                 }
