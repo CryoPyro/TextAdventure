@@ -55,9 +55,9 @@ public class Program
                 ]),
             ])]),
             new Room("Shop", "A mysterious litte shop, veils and bottles cover the walls...", [1], null, new ShopEvent("", "You enter the shop", [
-                (0, new LockPick("Simple lockpick", 0.5f)),
-                (0, new Potion("Lesser healing potion", 5)),
-                (0, new Potion("Greater healing Potion", 10))
+                (3, new LockPick("Simple lockpick", 0.5f)),
+                (3, new Potion("Lesser healing potion", 5)),
+                (5, new Potion("Greater healing Potion", 10))
             ])),
             new Room("Castle", "You walk through the castle gate", [1, 4, 6], null, castleGate),
             new Room("Main Hall", "The stains are not visible on the red carpet", [3, 5], null, new CombatEvent("", [new Enemy("Royal Swordsman", 15, 2), new Enemy("Royal Swordswoman", 10, 4)], new SearchEvent("", "You loot the royal guards", [[new Weapon("Broad Sword", 5)]]))),
