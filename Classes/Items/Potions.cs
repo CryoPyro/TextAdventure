@@ -3,7 +3,7 @@ using TextAdventure.Classes.Characters;
 namespace TextAdventure.Classes.Items;
 
 
-public class Potion(string name, string description, int healAmount, int value = 0) : Item(name, description, value)
+public class Potion(string name, int healAmount) : Item(name)
 {
     public int healing = healAmount;
 

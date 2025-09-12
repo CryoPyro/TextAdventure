@@ -1,20 +1,21 @@
 using TextAdventure.Classes.Characters;
-using static TextAdventure.Classes.Input.InputHelper;
+using TextAdventure.Classes.Input;
 
 namespace TextAdventure.Classes.Events;
 
 
-public class PickPathEvent : Event
+public class PickPathEvent(string name, string description) : Event(name, description)
 {
-    public PickPathEvent()
-    {
-        Name = "Go Somewhere";
-        Descripton = "Pick a path";
-    }
-
     public override Event? Update(ref Player player, Room[] world)
     {
-        player.Location = world[player.Location.Connections[AskToChoose(player.Location.Connections.Select(i => world[i].Name)) - 1]]; // Most beautiful one-liner ever concocted        
+        var i = InputHelper.AskToChooseWithGoBack(player.Location.Connections.Select(i => world[i].Name));
+        if (i == player.Location.Connections.Length)
+        {
+            player.ExitEvent(this);
+            return null;
+        }
+
+        player.Location = world[player.Location.Connections[i]];
         return player.Location.OnEnter;
     }
 }
