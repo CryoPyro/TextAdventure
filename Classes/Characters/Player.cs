@@ -33,7 +33,7 @@ public class Player(string name, int maxHealth, int damage, int money, Room star
 
     public int GetDamage()
     {
-        return Damage + inventory.Sum(item => item is Weapon weapon ? weapon.damageIncrease : 0);
+        return Damage + inventory.OfType<Weapon>().First().GetDamage();
     }
 
     public void ExitEvent(Event current)
@@ -45,8 +45,6 @@ public class Player(string name, int maxHealth, int damage, int money, Room star
     // Returns true if the player flees battle
     public bool TakeTurn(CombatEvent fight)
     {
-        Potion[] potions = null;
-
         while (true)
         {
             isGuarding = false;
@@ -66,7 +64,7 @@ public class Player(string name, int maxHealth, int damage, int money, Room star
                     InputHelper.DisplayAndWait("You Guard against the enemy's attack");
                     return false;
                 case 2:
-                    potions ??= [.. inventory.OfType<Potion>()];
+                    Potion[] potions = [.. inventory.OfType<Potion>()];
                     var j = InputHelper.AskToChooseWithGoBack(potions.Select(item => $"{item.Name}"));
                     if (j != potions.Length)
                     {

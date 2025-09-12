@@ -79,7 +79,8 @@ public class Program
             new Room("Home (Night)", "Moonlight shines through the windows", [9], [new TeleportEvent("Go to bed", "You wake up the next morning", 0)]),
             new Room("Town (Night)", "The streets are empty", [8, 10, 11]),
             new Room("Shop (Night)", "The shop is eerily quiet", [9], [new ShopEvent("Steal", "You decide to steel from the poor innocent shop keeper", [
-                (0, new Potion("Secret Potion", new Random().Next(5, 10), true)),
+                (0, new SecretPotion("Secret Potion", 3, 10)),
+                (0, new SecretWeapon("Secret Dagger", 1, 15)),
                 (0, new Key("Spare Castle Key")),
             ])],  new LockedEvent("", "The shop has closed for the night")),
             new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 14], null, castleGate),

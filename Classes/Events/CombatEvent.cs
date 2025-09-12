@@ -44,7 +44,11 @@ public class CombatEvent : Event
         }
 
         var random = new Random();
-        var enemy = Enemies[random.Next(0, Enemies.Count)];
+
+        Enemy? enemy;
+        // If any enemy is charging select that one, else a random one
+        enemy = Enemies.Find(enemy => enemy.IsChargingHeavy);
+        enemy ??= Enemies[random.Next(0, Enemies.Count)];
 
         if (enemy.IsChargingHeavy || random.Next(0, 2) == 1)
         {
