@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2025-09-10 - Text Adventure", "2025-09-10 - Text Adventure.csproj", "{8147DC98-6C6D-7CF3-1F9E-8442D4E4F97F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAdventure", "TextAdventure.csproj", "{8147DC98-6C6D-7CF3-1F9E-8442D4E4F97F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
