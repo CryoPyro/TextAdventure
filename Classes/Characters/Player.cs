@@ -36,15 +36,6 @@ public class Player(string name, int maxHealth, int damage, int money, Room star
         return Damage + inventory.Sum(item => item is Weapon weapon ? weapon.damageIncrease : 0);
     }
 
-    public void TakeDamage(int damage)
-    {
-        if (isGuarding)
-            damage /= 2;
-
-        Health -= damage;
-        Console.WriteLine($"You took {damage} damage!");
-    }
-
     public void ExitEvent(Event current)
     {
         if (Location.OnEnter == current)
@@ -72,6 +63,7 @@ public class Player(string name, int maxHealth, int damage, int money, Room star
                     break;
                 case 1:
                     isGuarding = true;
+                    InputHelper.DisplayAndWait("You Guard against the enemy's attack");
                     return false;
                 case 2:
                     potions ??= [.. inventory.OfType<Potion>()];

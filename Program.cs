@@ -70,6 +70,7 @@ public class Program
                 (0, new Potion("Secret Potion 1", new Random().Next(20))),
                 (0, new Potion("Secret Potion 2", new Random().Next(20))),
                 (0, new Potion("Secret Potion 3", new Random().Next(20))),
+                (0, new Key("Spare Castle Key")),
             ])],  new LockedEvent("", "The shop has closed for the night")),
             new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 14], null, new LockedEvent("", "The Castle Gate is locked", false)),
             new Room("Main Hall (Night)", "The nights who patrol the hallways seem to have gone to sleep", [11, 13]),

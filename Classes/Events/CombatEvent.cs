@@ -49,8 +49,9 @@ public class CombatEvent : Event
 
         if (enemy.IsChargingHeavy || random.Next(0, 2) == 1)
         {
-            Description += $"{enemy.Name} strikes you! for " + enemy.GetDamage() + " damage";
-            player.TakeDamage(enemy.GetDamage());
+            int damage = (int)(enemy.GetDamage() * (player.isGuarding ? 0.5f : 1));
+            Description += $"{enemy.Name} strikes you! for " + damage + " damage";
+            player.Health -= damage;
             enemy.IsChargingHeavy = false;
             if (player.Health <= 0)
                 return new GameOverEvent("", $"You cannot give up just yet... \n{player.Name}! Stay determined."); // 'name' is empty since it will never be listed as an option
