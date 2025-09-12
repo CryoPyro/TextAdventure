@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
 using TextAdventure.Classes.Events;
 
 namespace TextAdventure.Classes;

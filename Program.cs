@@ -1,4 +1,7 @@
-﻿using TextAdventure.Classes;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using TextAdventure.Classes;
 using TextAdventure.Classes.Events;
 using TextAdventure.Classes.Characters;
 using TextAdventure.Classes.Items;
