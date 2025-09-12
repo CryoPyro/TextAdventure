@@ -19,6 +19,7 @@ public class Program
 
     public static void RunGame()
     {
+        // Player init
         var player = new Player("", 10, 2, 0, null);
         do
         {
@@ -38,12 +39,8 @@ public class Program
         // Misc
         var wakeUpDragon = new CombatEvent("Wake up the dragon", [dragon], slayedTheDragonEnding);
         var guardEvent = new CombatEvent("Take the keys by force", [new Enemy("Guard", 10, 1)], new SearchEvent("", "You loot the guard", [[new Money("Coin Pouch", 15), new Key("Guard key"), new Weapon("Shabby Sword", 3)]]));
-        List<(int, Item)> shopStock = [
-            (0, new LockPick("Simple lockpick", 0.5f)),
-            (0, new Potion("Lesser healing potion", 5)),
-            (0, new Potion("Greater healing Potion", 10))
-        ];
 
+        // World init
         Room[] World = [
             new Room("Home", "Home sweet home", [1], [
                 new SearchEvent("Look around in your room", "You search under the bed", [[new Money("coins", 10), new Weapon("Wooden Sword", 1)]]),
@@ -56,21 +53,29 @@ public class Program
                     new CoinFlipEvent("Try to steal the coin pouch", "You try to steal the coin pouch", guardEvent, new SearchEvent("", "You snatch the coin pouch and run away", [[new Money("Coin Pouch", 15)]])),
                 ]),
             ])]),
-            new Room("Shop", "A mysterious litte shop, veils and bottles cover the walls...", [1], null, new ShopEvent("", "You enter the shop", shopStock)),
+            new Room("Shop", "A mysterious litte shop, veils and bottles cover the walls...", [1], null, new ShopEvent("", "You enter the shop", [
+                (0, new LockPick("Simple lockpick", 0.5f)),
+                (0, new Potion("Lesser healing potion", 5)),
+                (0, new Potion("Greater healing Potion", 10))
+            ])),
             new Room("Castle", "You walk through the castle gate", [1, 4, 6], null, new LockedEvent("", "The Castle Gate is locked", false)),
             new Room("Main Hall", "The stains are not visible on the red carpet", [3, 5], null, new CombatEvent("", [new Enemy("Royal Swordsman", 15, 2), new Enemy("Royal Swordswoman", 10, 4)], new SearchEvent("", "You loot the royal guards", [[new Weapon("Broad Sword", 5)]]))),
             new Room("Throne Room", "The Dragon king sits upon the throne", [4], [new CombatEvent("Challenge the Dragon king", [king, new Enemy("Royal Captain", 15, 3), new Enemy("Squire", 7, 2)], newKingEnding)]),
             new Room("Castle Dungeons", "A musty smell fills the air", [3, 6]),
-            new Room("Treasury", "The dragon is slain...", [5], null, new CombatEvent("", [dragon], slayedTheDragonEnding)),
+            new Room("Treasure Chamber", "The dragon is slain...", [5], null, new CombatEvent("", [dragon], slayedTheDragonEnding)),
             // NightTime 8...
             new Room("Home (Night)", "Moonlight shines through the windows", [9], [new TeleportEvent("Go to bed", "You wake up the next morning", 0)]),
             new Room("Town (Night)", "The streets are empty", [8, 10, 11]),
-            new Room("Shop", "The shop is eerily quiet", [9], [new ShopEvent("Steal", "You decide to steel from the poor innocent shop keeper", shopStock)],  new LockedEvent("", "The shop has closed for the night")),
-            new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 13], null, new LockedEvent("", "The Castle Gate is locked", false)),
-            new Room("Main Hall (Night)", "The nights who patrol the hallways seem to have gone to sleep", []),
-            new Room("Throne Room", "The kings presence can be felt staring down on you from the throne.\nA sword rests against the throne", [12], [new SearchEvent("Steal the sword", "You take the sword", [[new Weapon("Greatsword", 10)]])]),
-            new Room("Castle Dungeons", "A musty smell fills the air", [11, 14]),
-            new Room("Treasury", "You enter the treasury as quietly as possible, the dragon is sleeping on the pile of treasure", [13], [
+            new Room("Shop (Night)", "The shop is eerily quiet", [9], [new ShopEvent("Steal", "You decide to steel from the poor innocent shop keeper", [
+                (0, new Potion("Secret Potion 1", new Random().Next(20))),
+                (0, new Potion("Secret Potion 2", new Random().Next(20))),
+                (0, new Potion("Secret Potion 3", new Random().Next(20))),
+            ])],  new LockedEvent("", "The shop has closed for the night")),
+            new Room("Castle (Night)", "You walk through the castle gate", [9, 12, 14], null, new LockedEvent("", "The Castle Gate is locked", false)),
+            new Room("Main Hall (Night)", "The nights who patrol the hallways seem to have gone to sleep", [11, 13]),
+            new Room("Throne Room (Night)", "The kings presence can be felt staring down on you from the throne.\nA sword rests against the throne", [12], [new SearchEvent("Steal the sword", "You take the sword", [[new Weapon("Greatsword", 10)]])]),
+            new Room("Castle Dungeons (Night)", "A musty smell fills the air", [11, 15]),
+            new Room("Treasure Chamber (Night)", "You enter the treasury as quietly as possible, the dragon is sleeping on the pile of treasure", [14], [
                 wakeUpDragon,
                 new CoinFlipEvent("Try to steal some gold without the dragon noticing you", "You sneak towards the dragon and pick up a chest of gold...", wakeUpDragon, theifEnding, 0.80f)
             ]),

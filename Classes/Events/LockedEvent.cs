@@ -24,11 +24,10 @@ public class LockedEvent(string name, string description, bool unlockableByPickl
                 if (i == keys.Length) return this;
 
                 var usedKey = keys[i];
-                player.inventory.Remove(usedKey);
-
                 if (UnlockableByPicklock || usedKey is not LockPick)
                 {
-                    if (!usedKey.Use())
+                    player.inventory.Remove(usedKey);
+                    if (usedKey.Use())
                     {
                         RemoveFromPlayerLocation(player);
                         return null;
